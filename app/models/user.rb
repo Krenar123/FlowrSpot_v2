@@ -3,6 +3,6 @@ class User < ApplicationRecord
 
     validates_presence_of :email, :username, :password
 
-    has_many :sightings
-    has_many :likes
+    has_many :sightings, dependent: :destroy
+    has_many :likes, dependent: :destroy
 end
