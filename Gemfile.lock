@@ -66,6 +66,8 @@ GEM
     crass (1.0.6)
     diff-lcs (1.4.4)
     erubi (1.9.0)
+    factory_bot (6.0.2)
+      activesupport (>= 5.0.0)
     ffi (1.13.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -154,6 +156,8 @@ GEM
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
     rspec-support (3.9.3)
+    shoulda-matchers (4.3.0)
+      activesupport (>= 4.2.0)
     sidekiq (6.1.0)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
@@ -185,6 +189,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   byebug
+  factory_bot
   httparty
   jwt
   listen (~> 3.2)
@@ -193,6 +198,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 6.0.3, >= 6.0.3.2)
   rspec-rails (~> 4.0.1)
+  shoulda-matchers (~> 4.0)
   sidekiq
   spring
   spring-watcher-listen (~> 2.0.0)
