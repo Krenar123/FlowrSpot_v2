@@ -43,6 +43,7 @@ end
 
 group :test do
   gem 'shoulda-matchers', '~> 4.0'
+  gem 'active_storage_validations'
 end
 
 group :development do
