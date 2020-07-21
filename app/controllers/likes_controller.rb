@@ -13,11 +13,14 @@ class LikesController < ApplicationController
     def destroy
         sighting = Sighting.find(params[:sighting_id])
         like = Like.find_by(user: logged_in_user, sighting: sighting)
-        
-        if like.destroy
-            render json: { note: 'You disliked this sighting!' }
+        if like.nil?
+            render json: { note: 'Something went wrong!!'}
         else
-            render json: { note: 'Something went wrong!!' }
+            if like.destroy
+                render json: { note: 'You disliked this sighting!' }
+            else
+                render json: { note: 'You dont have permission!!' }
+            end
         end
     end
 end
