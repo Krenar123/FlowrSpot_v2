@@ -34,6 +34,12 @@ gem 'httparty'
 # Creating Jobs, making things in background ( threads ).
 gem 'sidekiq'
 
+# Using this gem as helper for json testing
+gem 'rspec-json_expectations'
+gem 'rspec-json_matchers', require: false
+gem 'rails-controller-testing'
+gem 'airborne'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
