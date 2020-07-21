@@ -7,6 +7,11 @@ Rails.application.routes.draw do
     resources :sightings, only: [:create, :index, :destroy]
   end
 
+  # I could put this inside sightings implemented in flowers resources
+  resources :sightings do
+    resources :likes, only: [:create, :destroy]
+  end
+
   post '/login', to: 'users#login'
   get '/auto_login', to: 'users#auto_login'
 end
