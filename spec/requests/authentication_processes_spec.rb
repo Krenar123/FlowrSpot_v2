@@ -8,28 +8,47 @@ RSpec.describe "AuthenticationProcesses" do
   end
 
   describe 'loggin in and signing up' do
-    it 'should login successfully' do 
-      post '/api/v2/login', params: { email: user.email, password: user.password }, headers: token
-
-      expect(response).to have_http_status(:ok)
-      expect(response.body).to include(user.email)
-      expect(response.body).to include(token_new)
+    context 'when giving the right parameters' do
+      it 'should login successfully' do
+        post '/api/v2/login', params: { email: user.email, password: user.password }
+  
+        expect(response).to have_http_status(:ok)
+        expect(response.body).to include(user.email)
+        expect(response.body).to include(token_new)
+      end
+      
+      it 'should register successfully' do
+        post '/api/v2/users', params: { user: { username: "test222",
+                                              email: "test222@gmail.com",
+                                              password: "test",
+                                              password_confirmation: "test" } }
+        
+        expect(response).to have_http_status(:ok)
+      end
     end
 
-    it 'should register successfully' do
-      post '/api/v2/users', params: { user: { username: "test222",
-                                            email: "test222@gmail.com",
-                                            password: "test",
-                                            password_confirmation: "test" } }
-      
-      expect(response).to have_http_status(:ok)
+    context 'when passing wrong parameters' do
+      it 'should not login' do
+        post '/api/v2/login', params: { email: "", password: "" }
+
+        expect(response.body).to be_json.with_content({ error: 'Invalid email or password!' })
+      end
+
+      it 'should not be able to register' do
+        post '/api/v2/users', params: { user: { username: "",
+                                                email: "",
+                                                password: "",
+                                                password_confirmation: "" } }
+
+        expect(response.body).to be_json.with_content({ error: 'Invalid inputs!' })
+      end
     end
   end
 
-  describe 'requesting flowers and sightings flower without logging in' do
+  describe 'requesting flowers and sightings flower as logged in or not logged in' do
     let!(:flower) { create(:flower) }
     let!(:sighting) { create(:sighting) }
-
+  
     it 'should render all flowers and validate types' do
       get '/api/v2/flowers'
 
