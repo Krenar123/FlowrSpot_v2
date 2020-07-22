@@ -25,7 +25,7 @@ Once you clone this project from github or download it, make sure you run `updat
 
 ## Starting the application
 
-First thing use have to do is:
+First thing you have to do is:
 `rails db:migrate, rails db:create & rails db:seed`
  After configuring database you can start redis by typing: `redis-server` in case it gives problems starting server, you can also ignore that.
 
@@ -110,3 +110,4 @@ To run all tests run:
 *   gem 'airborne' -> helper for json testing
 *   gem 'factory_bot_rails' -> for creating factories ( model testing )
 *   gem 'shoulda-matchers', '~> 4.0' 
+
