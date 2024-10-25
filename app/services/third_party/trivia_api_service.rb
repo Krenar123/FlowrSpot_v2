@@ -1,5 +1,5 @@
 module ThirdParty
-  class TriviaApiService
+  class TriviaApiService < ThirdParty::Base
     API_URL = "https://opentdb.com/api.php?amount=1&category=18&difficulty=medium"
 
     def fetch_question

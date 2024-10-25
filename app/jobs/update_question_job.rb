@@ -11,3 +11,7 @@ class UpdateQuestionJob < ApplicationJob
     Rails.logger.error("Failed to update sighting: #{sighting.id}: #{e.message}")
   end
 end
+
+# Run tests
+# check if I can make the error codes for trivia 
+# I need to add docker to run it and learn it 
