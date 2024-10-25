@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
       # I could put this inside sightings implemented in flowers resources
       resources :sightings do
-        resources :likes, only: [:create, :destroy]
+        post :toggle_like
       end
 
       post '/login', to: 'users#login'
